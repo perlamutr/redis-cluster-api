@@ -1,7 +1,8 @@
 Redis cluster REST API
 ======================
-##Usage:
-REDIS_HOST=localhost:7000 ./main &
+## Usage:
+`REDIS_HOST=localhost:7000 ./main &`
+
 Using in docker-compose.yml file:
 ```yaml
 services:
@@ -15,7 +16,7 @@ services:
       REDIS_HOST: "redis:7000"
 ``` 
 
-##Commands:
+## Commands:
 1. [Get whole cluster keys](#keys)
 2. [Set any key value](#set)
 3. [Add to queue](#lpush)
@@ -23,27 +24,27 @@ services:
 
 <a name="keys"></a>
 ## 1. Get whole cluster keys
-####request:
+#### request:
     curl -XGET http://container.host/keys?pattern=key*
-####response:
+#### response:
     {"result":["keyNames"]}
 <a name="set"></a>
 ## 2. Set any key value
-####request:
+#### request:
     curl -XPOST http://container.host/set/keyName \
         -d 'KEY VALUE STRING'
-####response:
+#### response:
     {"result":"OK"}
 <a name="lpush"></a>
 ## 3. Add to queue
-####request:
+#### request:
     curl -XPOST http://container.host/lpush/queueName \
         -d '{"queue":"record"}'
-####response:
+#### response:
     {"result":{"in_queue":1}}
 <a name="lrange"></a>
 ## 4. Review queue records
-####request:
+#### request:
     curl -XGET http://container.host/lrange/queueName
-####response:
+#### response:
     {"result":["{\"queue\":\"record\"}"]}
