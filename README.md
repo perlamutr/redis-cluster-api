@@ -1,7 +1,7 @@
 Redis cluster REST API
 ======================
 ## Usage:
-`REDIS_HOST=localhost:7000 ./main &`
+`REDIS_HOST=localhost:7000 RECONNECT_SEC=10 ./main &`
 
 Using in docker-compose.yml file:
 ```yaml

@@ -16,11 +16,11 @@ func NewRedis() *Redis {
 
 //	Connect initialize new redis cluster connection
 func (r *Redis) Connect(host string) error {
-	fmt.Printf("host is %s", host)
 	r.ClusterClient = *redis.NewClusterClient(&redis.ClusterOptions{Addrs: []string{host}})
 	status := r.ClusterClient.Ping()
 	if text, err := status.Result(); text != "PONG" {
 		return fmt.Errorf("cannot execute ping: %s", err)
 	}
+	fmt.Printf("Successfully connected and listening %s\n", host)
 	return nil
 }
